@@ -11,8 +11,8 @@ namespace PracticalLINQ
     {
         static void Main(string[] args)
         {
-            AnyVsCount();
-
+            // AnyVsCount();
+            SingleFirstDefault();
         }
 
         private static void AnyVsCount()
@@ -35,6 +35,46 @@ namespace PracticalLINQ
 
             Console.WriteLine("Elapsed time for Any: {0}", stopwatch.Elapsed);
         }
+
+        private static void SingleFirstDefault()
+        {
+            var triples = from x in Enumerable.Range(1, 150)
+                          let y = x + 1
+                          let z = x + 2
+                          select new { x, y, z };
+
+            var perfectTriples = from point in triples
+                                 where point.x * point.x + point.y * point.y == point.z * point.z
+                                 select point;
+
+            var only = perfectTriples.Single();
+            Console.WriteLine("Only perfect triple: {0}", only);
+
+            var oddSum = from point in triples
+                         where (point.x + point.y + point.z) % 2 == 1
+                         select point;
+
+            var first = oddSum.First();
+            Console.WriteLine("The first match of {0} is {1}", oddSum.Count(), first);
+
+            var perfectSquares = from point in triples
+                                 let product = point.x * point.y * point.z
+                                 where Math.Sqrt(product) == Math.Floor(Math.Sqrt(product))
+                                 select point;
+            var sought = perfectSquares.FirstOrDefault();
+            if (sought == null)
+                Console.WriteLine("Not found");
+            else
+                Console.WriteLine("Found {0} matches. First match is {1}", perfectSquares.Count(), sought);
+
+            // Use the perfect triples again for SingleOrDefault:
+            var soughtSingle = perfectTriples.SingleOrDefault();
+            if (soughtSingle == null)
+                Console.WriteLine("Not found");
+            else
+                Console.WriteLine("Found {0}", soughtSingle);
+        }
+
 
         public static IEnumerable<int> GenerateLongRandomSequence()
         {
