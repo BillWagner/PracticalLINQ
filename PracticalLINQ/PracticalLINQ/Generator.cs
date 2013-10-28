@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace PracticalLINQ
 {
-    public class Generator
+    public class Generator : IDisposable
     {
+        private bool isDisposed;
        public Generator(int startAt = 0, int size = 20)
         {
             StartAt = startAt;
@@ -16,11 +17,21 @@ namespace PracticalLINQ
 
         public IEnumerable<int> Generate()
         {
-            return from n in Enumerable.Range(StartAt, Size)
-                   select n;
+            int index = 0;
+            while (index < Size)
+            {
+                if (isDisposed)
+                    throw new ObjectDisposedException("Generator");
+                yield return StartAt + index++;
+            }
         }
         public int StartAt { get; set; }
 
         public int Size { get; set; }
+
+        public void Dispose()
+        {
+            isDisposed = true;
+        }
     }
 }

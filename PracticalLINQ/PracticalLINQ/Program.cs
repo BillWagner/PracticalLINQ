@@ -122,10 +122,12 @@ namespace PracticalLINQ
 
         private static IEnumerable<int> Closure()
         {
-            var g = new Generator(0, 15);
-            var items = g.Generate();
+            using (var g = new Generator(0, 15))
+            {
+                var items = g.Generate();
 
-            return items;
+                return items;
+            }
         }
 
         public static IEnumerable<int> GenerateLongRandomSequence()
