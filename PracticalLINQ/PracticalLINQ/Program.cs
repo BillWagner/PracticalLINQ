@@ -163,7 +163,8 @@ namespace PracticalLINQ
             }
 
             var validSessions = from session in model.Sessions
-                                .AsEnumerable()
+                                .AsEnumerable() 
+                                .AsQueryable()
                                 where !string.IsNullOrWhiteSpace(session.Name)
                                 select session;
             foreach (var s in validSessions)
