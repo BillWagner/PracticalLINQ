@@ -104,7 +104,7 @@ namespace PracticalLINQ
         {
             var generator = new Random();
             var nonIdemPotent = Enumerable.Range(1, 10)
-                                .Select(n => generator.Next(25));
+                                .Select(n => generator.Next(25)).ToList();
 
             foreach (var item in nonIdemPotent)
                 Console.WriteLine(item);
