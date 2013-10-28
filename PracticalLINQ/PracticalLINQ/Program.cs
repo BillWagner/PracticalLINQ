@@ -21,7 +21,8 @@ namespace PracticalLINQ
         {
             // AnyVsCount();
             //SingleFirstDefault();
-            QueryWithSideEffects();
+            //QueryWithSideEffects();
+            NonIdemPotent();
         }
 
         private static void AnyVsCount()
@@ -96,6 +97,21 @@ namespace PracticalLINQ
 
             Console.WriteLine();
             foreach (var item in items)
+                Console.WriteLine(item);
+        }
+
+        private static void NonIdemPotent()
+        {
+            var generator = new Random();
+            var nonIdemPotent = Enumerable.Range(1, 10)
+                                .Select(n => generator.Next(25));
+
+            foreach (var item in nonIdemPotent)
+                Console.WriteLine(item);
+
+            Console.WriteLine();
+
+            foreach (var item in nonIdemPotent)
                 Console.WriteLine(item);
         }
 
