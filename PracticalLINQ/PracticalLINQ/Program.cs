@@ -19,10 +19,15 @@ namespace PracticalLINQ
 
         static void Main(string[] args)
         {
-            AnyVsCount();
+            //AnyVsCount();
             //SingleFirstDefault();
             //QueryWithSideEffects();
             //NonIdemPotent();
+            var g1 = Closure();
+
+            foreach (var item in g1)
+                Console.WriteLine(item);
+
         }
 
         private static void AnyVsCount()
@@ -113,6 +118,14 @@ namespace PracticalLINQ
 
             foreach (var item in nonIdemPotent)
                 Console.WriteLine(item);
+        }
+
+        private static IEnumerable<int> Closure()
+        {
+            var g = new Generator(0, 15);
+            var items = g.Generate();
+
+            return items;
         }
 
         public static IEnumerable<int> GenerateLongRandomSequence()
