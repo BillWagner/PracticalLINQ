@@ -19,10 +19,10 @@ namespace PracticalLINQ
 
         static void Main(string[] args)
         {
-            // AnyVsCount();
+            AnyVsCount();
             //SingleFirstDefault();
             //QueryWithSideEffects();
-            NonIdemPotent();
+            //NonIdemPotent();
         }
 
         private static void AnyVsCount()
@@ -31,7 +31,7 @@ namespace PracticalLINQ
 
             var oddNumberSequence = (from value in GenerateLongRandomSequence()
                                      where value % 2 == 1
-                                     select value);
+                                     select value).ToArray();
 
             stopwatch.Start();
             var hasOdds = oddNumberSequence.Any();
