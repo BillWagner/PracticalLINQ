@@ -23,12 +23,12 @@ namespace PracticalLINQ
             //AnyVsCount();
             //SingleFirstDefault();
             //QueryWithSideEffects();
-            //NonIdemPotent();
+            NonIdemPotent();
             //var g1 = Closure();
 
             //foreach (var item in g1)
             //    Console.WriteLine(item);
-            QueryableEnumerable();
+            //QueryableEnumerable();
         }
 
         private static void AnyVsCount()
@@ -109,8 +109,8 @@ namespace PracticalLINQ
         private static void NonIdemPotent()
         {
             var generator = new Random();
-            var nonIdemPotent = Enumerable.Range(1, 10)
-                                .Select(n => generator.Next(25)).ToList();
+            var nonIdemPotent = Enumerable.Range(1, 10).Log("After Range")
+                                .Select(n => generator.Next(25)).Log("After Select");
 
             foreach (var item in nonIdemPotent)
                 Console.WriteLine(item);
