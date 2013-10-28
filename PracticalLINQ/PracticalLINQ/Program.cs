@@ -109,8 +109,8 @@ namespace PracticalLINQ
         private static void NonIdemPotent()
         {
             var generator = new Random();
-            var nonIdemPotent = Enumerable.Range(1, 10).Log("After Range")
-                                .Select(n => generator.Next(25)).Log("After Select");
+            var nonIdemPotent = Enumerable.Range(1, 10).LogSequence("After Range")
+                                .Select(n => generator.Next(25)).LogSequence("After Select");
 
             foreach (var item in nonIdemPotent)
                 Console.WriteLine(item);
