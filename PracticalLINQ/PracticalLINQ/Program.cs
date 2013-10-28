@@ -9,10 +9,19 @@ namespace PracticalLINQ
 {
     class Program
     {
+        static string[] someNicknames = new string[]
+        {
+            "Mad Max",
+            "JV",
+            "Mister Fister",
+            "OnTheBall Sanchez"
+        };
+
         static void Main(string[] args)
         {
             // AnyVsCount();
-            SingleFirstDefault();
+            //SingleFirstDefault();
+            QueryWithSideEffects();
         }
 
         private static void AnyVsCount()
@@ -75,6 +84,20 @@ namespace PracticalLINQ
                 Console.WriteLine("Found {0}", soughtSingle);
         }
 
+        private static void QueryWithSideEffects()
+        {
+            var index = 0;
+            var items = (from item in someNicknames
+                         select string.Format("The index of {0} is {1}",
+                         item, index++));
+
+            foreach (var item in items)
+                Console.WriteLine(item);
+
+            Console.WriteLine();
+            foreach (var item in items)
+                Console.WriteLine(item);
+        }
 
         public static IEnumerable<int> GenerateLongRandomSequence()
         {
