@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SimpleModel;
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -23,11 +24,11 @@ namespace PracticalLINQ
             //SingleFirstDefault();
             //QueryWithSideEffects();
             //NonIdemPotent();
-            var g1 = Closure();
+            //var g1 = Closure();
 
-            foreach (var item in g1)
-                Console.WriteLine(item);
-
+            //foreach (var item in g1)
+            //    Console.WriteLine(item);
+            QueryableEnumerable();
         }
 
         private static void AnyVsCount()
@@ -128,6 +129,44 @@ namespace PracticalLINQ
 
                 return items;
             }
+        }
+
+        private static void QueryableEnumerable()
+        {
+            var model = new QuerySource();
+
+            if (model.Presenters.Any() == false)
+            {
+                var person = new Presenter
+                {
+                    Name = "Bill Wagner"
+                };
+
+                var sessions = new List<Session>
+                {
+                    new Session{
+                        Name="Practical LINQ",
+                        Abstract="Learn cool things about LINQ",
+                        Presenter = person
+                    },
+                    new Session{
+                        Name="Modern C#",
+                        Abstract="Why do we ",
+                        Presenter = person
+                    },
+                };
+                person.Sessions = sessions;
+                model.Presenters.Add(person);
+                foreach (var s in person.Sessions)
+                    model.Sessions.Add(s);
+                model.SaveChanges();
+            }
+
+            var validSessions = from session in model.Sessions
+                                where !string.IsNullOrWhiteSpace(session.Name)
+                                select session;
+            foreach (var s in validSessions)
+                Console.WriteLine(s.Name);
         }
 
         public static IEnumerable<int> GenerateLongRandomSequence()
