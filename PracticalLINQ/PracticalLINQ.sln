@@ -5,6 +5,8 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PracticalLINQ", "PracticalLINQ\PracticalLINQ.csproj", "{AA967831-28B5-4A5C-A2A5-F38539D68B59}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SimpleModel", "SimpleModel\SimpleModel.csproj", "{8735B12E-F567-458A-8867-35F627AB167D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{AA967831-28B5-4A5C-A2A5-F38539D68B59}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AA967831-28B5-4A5C-A2A5-F38539D68B59}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AA967831-28B5-4A5C-A2A5-F38539D68B59}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8735B12E-F567-458A-8867-35F627AB167D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8735B12E-F567-458A-8867-35F627AB167D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8735B12E-F567-458A-8867-35F627AB167D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8735B12E-F567-458A-8867-35F627AB167D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
